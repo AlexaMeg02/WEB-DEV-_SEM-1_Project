@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Animal Paradise</title>
+    <link rel="stylesheet" href="style3.css">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav-logo">
+            <p>Animal Paradise</p>
+        </div>
+        <div class="nav-menu" id="navMenu"> 
+            <ul>
+                <li><a href="Home.html" data-page="home" class="link active">Home</a></li>
+                <li><a href="#" data-page="signup" class="link">Sign Up</a></li>
+                <li><a href="#" data-page="login" class="link">Login</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div id="content" class="home">
+        <div id="home" class="page">
+            <section class="hero">
+                <div class="container">
+                    <h1>Welcome to the Animal Paradise</h1>
+                    <p>We Aim to provide Animals Proper Treatment, Shelter, and Homes.</p>
+                    <a href="#adopt" class="btn">Adopt Now</a>
+                </div>
+            </section>
+            <main>
+                <section id="about" class="section">
+                    <div class="bck">
+                        <h2>About Us</h2>
+                        <p>The Animal Paradise is a non-profit organization that provides care and shelter to abandoned, abused, or neglected animals.</p>
+                    </div>
+                </section>
+                
+                <section id="adopt" class="section1">
+                    <h2>Featured Pets</h2>
+                    <div class="pets-grid">
+                        <div class="pet-card">
+                            <div class="image"><img src="image/dog1.png" alt="dog1"></div>
+                            <h3>Max</h3>
+                            <p>1-year-old Labrador Retriever</p>
+                        </div>
+                        <div class="pet-card">
+                            <div class="image">
+                                <img src="image/yorkie.png" alt="dog2">
+                                <h3>Luna</h3>
+                                <p>2-year-old Yorkie</p>
+                            </div>
+                        </div>
+                        <div class="pet-card">
+                            <div class="image">
+                                <img src="image/cat.png" alt="dog3">
+                                <h3>Max</h3>
+                                <p>5-year-old Siamese cat</p>
+                            </div>
+                        </div>
+                </section>
+            </main>
+            <footer class="footer">
+                <p>© 2025 Animal Paradise</p>
+                <div class="social-links">
+                    <a href="https://facebook.com">Facebook</a>
+                    <a href="https://twitter.com">Twitter</a>
+                    <a href="https://instagram.com">Instagram</a>
+                </div>
+            </footer> 
+        </div>
+
+        <div id="signup" class="page hidden">
+            <div class="form-container">
+                <h2>Sign Up</h2>
+                <input type="text" id="signup-name" placeholder="Enter your name" required>
+                <input type="email" id="signup-email" placeholder="Enter your email" required>
+                <input type="password" id="signup-password" placeholder="Enter your password" required>
+                <button id="signup-btn">Sign Up</button>
+                <p id="signup-error" style="color: red; display: none;">Please fill in all fields.</p>
+            </div>
+        </div>
+
+        <div id="login" class="page hidden">
+            <div class="form-container">
+                <h2>Login</h2>
+                <input type="email" id="login-email" placeholder="Enter your email" required>
+                <input type="password" id="login-password" placeholder="Enter your password" required>
+                <button id="login-btn">Login</button>
+                <p id="login-error" style="color: red; display: none;">Invalid email or password.</p>
+            </div>
+        </div>
+    </div>
+
+<script>
+    // Navigation functionality
+    const pages = document.querySelectorAll('.page');
+    const navLinks = document.querySelectorAll('nav a');
+
+    navLinks.forEach(link => {
+        link.addEventListener('click', event => {
+            event.preventDefault();
+            const targetPage = link.getAttribute('data-page');
+
+            pages.forEach(page => page.classList.add('hidden'));
+            document.getElementById(targetPage).classList.remove('hidden');
+        });
+    });
+
+    // Signup Functionality
+    document.getElementById('signup-btn').addEventListener('click', async () => {
+        const name = document.getElementById('signup-name').value.trim();
+        const email = document.getElementById('signup-email').value.trim();
+        const password = document.getElementById('signup-password').value.trim();
+
+        if (!name || !email || !password) {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:4000/api/user', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ name, email, password }),
+            });
+
+            if (response.ok) {
+                alert('Sign Up Successful! Redirecting to Login page...');
+                document.getElementById('signup').classList.add('hidden');
+                document.getElementById('login').classList.remove('hidden');
+            } else {
+                const data = await response.json();
+                alert(data.message || 'Sign Up Failed!');
+            }
+        } catch (error) {
+            alert('An error occurred. Please try again later.');
+        }
+    });
+
+    // Login Functionality
+    document.getElementById('login-btn').addEventListener('click', async () => {
+        const email = document.getElementById('login-email').value.trim();
+        const password = document.getElementById('login-password').value.trim();
+
+        if (!email || !password) {
+            alert('Please fill in all fields.');
+            return;
+        }
+
+        try {
+            const response = await fetch('http://localhost:4000/api/user/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ email, password }),
+            });
+
+            if (response.ok) {
+                const data = await response.json();
+                alert(`Welcome back, ${data.user.name}!`);
+                localStorage.setItem('user', JSON.stringify(data.user));
+                window.location.href = 'Home.html'; // Replace with the correct URL for your homepage
+            } else {
+                const data = await response.json();
+                alert(data.message || 'Invalid Email or Password!');
+            }
+        } catch (error) {
+            alert('An error occurred. Please try again later.');
+        }
+    });
+</script>
+</body>
+</html>

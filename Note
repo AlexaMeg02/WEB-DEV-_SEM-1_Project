@@ -1,0 +1,66 @@
+Backend : 
+1. Install Libraries
+2. Start the server  
+3. Connect with Database (MongoDB atlas)      https://www.youtube.com/watch?v=30p9QfybWZg
+4. Schemas       : https://www.youtube.com/watch?v=jZ-dzj6ut54
+5. REST APIS( Get , Put, Post , Delete)
+6. Test in thunder Client
+
+https://www.youtube.com/watch?v=-foo92lFIto&list=PL4cUxeGkcC9hAJ-ARcYq_z6lDZV7kT1xD
+
+
+
+
+Independently design, prototype, and develop a small web app, the MDA. Learn the required Node techniques while prototyping and developing - i.e. Setting up Node; Setting up Express; Setting up routes. Then, depending on their project : Interfacing with SQL/MongoDB; Generating dynamic content; and Authorisation (i.e. "logging in").
+
+
+
+Here are some project ideas for a single-page web application with a responsive front-end (HTML/CSS) and a small back-end (Node.js):
+
+1. Online Storefront **
+2. Task Manager (To-Do List) ****
+3. Weather Dashboard
+4. Personal Finance Tracker
+5. Interactive Quiz Game
+6. Recipe Finder **
+7. Expense Splitter
+8. Interactive Resume Generator
+9. Real-Time Chat Application
+10. Book Library Management
+11. Workout Tracker
+12. Flashcard Learning App
+13. Event RSVP System
+14. Budget Tracker
+15. Movie/TV Show Database
+16. Job Board Portal **
+17. Portfolio Website Generator
+18. Health and Fitness DashboardOnline Polling/Survey System
+
+
+19. Language Learning App
+20. Travel Planning App
+21. Music Playlist Manager
+22. Personal Blog **
+23. Book Recommendation System
+24. Real-Time Location Sharing App
+25. E-Learning Platform
+25. Virtual Whiteboard
+26. Gift Registry **
+27. Online Auction Platform **
+28. Pet Adoption Portal *****
+
+
+
+Samples of Responsive Website :
+
+-https://www.youtube.com/watch?v=0TtAiZp7ULY&ab_channel=AroobaArshad
+-https://youtu.be/RiJhTOaIWmc
+-https://youtu.be/LLxrfk8w-HI
+
+
+
+Live Website Links 
+-https://aroobaarshad.github.io/StudioGhibli.github.io/
+-https://sobia4.github.io/
+-https://trishamariajoson.github.io/
+-https://railey-inductivo.github.io/

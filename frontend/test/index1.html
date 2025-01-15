@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Example</title>
+    <link rel="stylesheet" href="slogin.css">
+</head>
+<body>
+    <h1>Adopt a Pet</h1>
+    <button id="fetchPets">Fetch Pets</button>
+    <div id="pets"></div>
+
+    <script>
+        document.getElementById('fetchPets').addEventListener('click', async () => {
+            try {
+                const response = await fetch('http://localhost:3000/api/pets'); // Replace with your API URL
+                const data = await response.json();
+
+                const petsContainer = document.getElementById('pets');
+                petsContainer.innerHTML = data.map(pet => `<p>${pet.name}</p>`).join('');
+            } catch (error) {
+                console.error('Error fetching pets:', error);
+            }
+        });
+    </script>
+</body>
+</html>
